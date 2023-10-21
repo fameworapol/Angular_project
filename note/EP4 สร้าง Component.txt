@@ -1,0 +1,21 @@
+🍎 การสร้าง component
+    ng generate component <component_name>
+
+🍎 นำ component ไปแสดงผลใน component อื่น
+    ex. นำ ActionBarComponent ไปแสดงผลใน AppComponent
+    - app.component.html
+      <app-action-bar></app-action-bar>
+
+🍎 ส่งค่าเข้าไปทำงานที่ component
+    ส่งค่าไปยัง ActionBarComponent ในตัวแปรชื่อ
+    app.component.html
+        <app-action-bar [step]="1"></app-action-bar>
+        <app-action-bar [step]="5"></app-action-bar>
+        <app-action-bar [step]="10"></app-action-bar>
+        <app-action-bar [step]="20"></app-action-bar>
+    action-bar.component.ts
+        export class ActionBarComponent {
+        @Input() step:number = 1;
+        }
+
+    

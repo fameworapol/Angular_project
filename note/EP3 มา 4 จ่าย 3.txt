@@ -1,0 +1,13 @@
+🍎 แทน element ใน html ด้วยตัวแปร
+    - <input #BufferPrice type="text" value="20000" placeholder="ราคาบุฟเฟต์">
+    แทน <input ด้้วยตัวแปร BufferPrice
+
+🍎 ส่งค่าจาก input เข้าไปทำงานที่ typeScript
+    - app.component.html
+    <input #BufferPrice type="text" value="20000" placeholder="ราคาบุฟเฟต์">
+    <button (click)="callBuffet(BufferPrice.value)">คำนวณ</button>
+    - app.component.ts ค่า value ของแบบฟอร์มจะถูกเก็บลงใน value:string
+    callBuffet(value:string){
+        const price = Number(value);
+        this.value = (price*3)/4;
+    }

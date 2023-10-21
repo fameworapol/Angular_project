@@ -1,0 +1,33 @@
+🍎 ในไฟล์ app-rounting-modules
+    const routes: Routes = [
+    {path:"test",component:ActionBarComponent},
+    {path:"home",component:TestRoutingComponent},
+    {path:"",component:LoginComponentComponent}
+    ];
+
+    @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+    })
+
+🍎 app.component.html
+    <router-outlet></router-outlet>
+
+🍎 login.component.html
+    <h1>Login</h1>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/test">Action</a>
+
+🏀 ใช้ Angular Router service (TypeScript)
+    หากคุณต้องการกำหนดลิงก์ที่ซับซ้อนหรือจัดการลิงก์ในโค้ด TypeScript คุณสามารถใช้ Angular Router service ในไฟล์ TypeScript ของคอมโพเนนต์
+    export class SomeComponent {
+        constructor(private router: Router) {}
+        ► ตัวอย่างเมื่อคลิกปุ่ม กำหนดให้เปลี่ยนเส้นทางไปยังหน้า about
+        goToAboutPage() {
+            this.router.navigate(['/about']);
+        }
+        ► ตัวอย่างเมื่อคลิกปุ่ม กำหนดให้เปลี่ยนเส้นทางไปยังหน้า Contact
+        goToContactPage() {
+            this.router.navigate(['/contact']);
+        }
+    }

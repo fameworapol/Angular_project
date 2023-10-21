@@ -1,0 +1,24 @@
+🌕 ngIf
+    🍎 ทำลาย view (*ngIf="false") หรือ element จะไม่แสดงผล
+        <div *ngIf="false">
+            <app-action-bar></app-action-bar>
+        </div>
+
+    🍎 สร้าง view (*ngIf="true") หรือ element จะแสดงผล
+        <div *ngIf="true">
+        <app-action-bar></app-action-bar>
+        </div>
+
+    🍎 กำหนดให้ผูกกับตัวแปร boolean ได้ด้วย
+
+🌕 ngIfElse
+    - ถ้าค่าใน activate เป็น true จะแสดงผล  <app-action-bar></app-action-bar>
+    
+    <div *ngIf="activate else ElseTemplate">
+        <app-action-bar></app-action-bar>
+    </div>
+    - ถ้าค่าใน activate เป็น false จะแสดงผล ใน ng-template #ElseTemplate
+    <ng-template #ElseTemplate>
+        <div>Else Condition</div>
+        </ng-template>
+    </body>

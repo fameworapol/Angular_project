@@ -1,0 +1,16 @@
+🍎 ngOnChanges: เมื่อมีการรับค่า Input จาก Component แม่ (Parent Component) มาใน Component ลูก (Child Component) การทำงานจะเกิดขึ้นก่อน 
+    ngOnInit โดยจะทำงานใหม่ทุกครั้งที่มีการเปลี่ยนแปลงค่า Input ที่รับเข้ามา
+    - login.component.html
+        <a routerLink="/onchange">OnChangeTest</a>
+        <input type="text" (input)="onChangeData($event)" >
+        <app-ngonchange [textInput]="data"></app-ngonchange>
+    - ngonchange.component.html
+        @Input() textInput:any = ""
+        ngOnChanges(changes: SimpleChanges): void {
+            // ทำงานเมื่อมีการเปลี่ยนแปลงใน @Input
+            // ค่าของข้อมูลใหม่จะถูกส่งมาในรูปแบบของ SimpleChanges object
+            // เมื่อค่าที่ถูกส่งมาจาก LoginComponent เปลี่ยนไปจะทำงาน
+            if (changes) {
+            console.log(this.textInput);
+            }
+        }

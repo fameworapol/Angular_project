@@ -1,0 +1,37 @@
+🍎 เมื่อเรียกใช้ฟังก์ชัน decrease() จะไปเรียกใช้ testNumberChange ที่อยู่ใน AppComponent
+    ● สร้าง event numeberChange
+    @Output() numeberChange = new EventEmitter()
+        decrease(){
+        if (this.counter<=0) {
+            return
+        }
+            this.counter-=this.step
+            console.log(this.counter);
+            this.numeberChange.emit(); 
+            >> ปล่อย eventNumberChange ออกมา (ดูว่า eventNumberChange เรียกใช้ฟังก์ชันอะไร ฟังก์ชันนั้นก็จะทำงาน)
+        }
+    ► app.component.html
+    <app-action-bar (numeberChange)="testNumberChange()" [step]="1"></app-action-bar>
+    เมื่อกด - จะทำการปล่อย click event และไปเรียกใช้ testNumberChange()
+
+🍎 ส่งค่าไปพร้อมกับ emit ได้
+    this.numeberChange.emit(this.counter);
+    ► app.component.html => ค่า this.counter ที่ถูกส่งมาเก็บลงใน $event > ส่งค่านั้นเข้าไปเป็น parameter ของฟังก์ชัน testNumberChange
+        <app-action-bar (numeberChange)="testNumberChange($event)" [step]="1"></app-action-bar>
+    ► app.component.ts => this.counter จะถูกเก็บลงใน value
+        testNumberChange(value:number){
+            console.log("test Number Change :",value);
+        }
+
+🍎 two way binding
+    ● การเขียนแบบปกติ
+    <app-action-bar 
+      [counter]="appCounter"  >> ส่งค่าใน appCounter ไปยัง actionbar component และเก็บลงในตัวแปร counter
+      (counterChange)="appCounter = $event" << actionbar ส่งค่าใน counter กลับออกมาและเก็บลงใน appCounter ของ AppComponent
+    >
+
+    ● การเขียนแบบ two way binding
+    <app-action-bar 
+      [(counter)]="appCounter"
+      [step]="20"
+    >
